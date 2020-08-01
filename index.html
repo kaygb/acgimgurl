@@ -56,7 +56,13 @@ p {
     font-size: 1rem;
     border: 1px dashed rgba(255, 255, 255, 0.5);
     padding: 10px;
+    word-break: normal;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
 }
+p::-webkit-scrollbar { width: 0 !important }
 p a {
     color: #e84393;
 }
@@ -105,7 +111,10 @@ a.upyun {
 }
 @media screen and (max-width: 600px) {
     .main {
-        margin: 100px auto;
+        margin: 10px auto;
+    }
+    h1{
+        font-size: 2.5rem;
     }
 }
     </style>
@@ -128,7 +137,7 @@ a.upyun {
         </div>
         <div class="content">
                 <!-- <p><script>document.write(url);</script></p> -->
-				<h2>API基本调用格式</h2>
+				<h2>基本调用格式</h2>
 				<p>https://<script>document.write(url);</script>/acgurl.phpreturn=https</p>
 				<h2>参数</h2>
                 <p>return=json //输出JSON格式<br>return=http //跳转一张http图片<br>return=https //跳转一张https图片<br>return=img //不跳转直接输出(较慢)</p>
