@@ -12,6 +12,7 @@ Version：20200708
     <meta name="keywords" content="">
     <meta name="theme-color" content="#000">
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/kaygb/blog-images/static_image/kaygb-logo/tx_compressed.jpg" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kaygb/www.kaygb.com@master/pws20200708/style.css"> -->
     <style>
             /* 
@@ -109,6 +110,19 @@ a.upyun {
     /* margin: 0; */
     height: 50px;
 }
+.btn{
+    border: 1px solid #7f7b7b;
+    background: #00000000;
+    border-radius: 0;
+    color: #fff;
+    padding: 5px 10px;
+}
+.btn::hover{
+    border: 1px solid #7f7f7f;
+    border-radius: 0;
+    cursor: pointer;
+
+}
 @media screen and (max-width: 600px) {
     .main {
         margin: 10px auto;
@@ -120,8 +134,8 @@ a.upyun {
     </style>
     <script>
         var url;
-        // url = window.location.host;  //如果是子目录，请自定义地址，不需要添加协议和最后的斜杠 “/”
-        url = "acg.t.eas1.cn";
+        url = window.location.host;  //如果是子目录，请使用下面的自定义地址，不需要添加协议和最后的斜杠 “/”
+        // url = "acg.t.eas1.cn";   //自定义地址
     </script>
 </head>
 <body>
@@ -136,9 +150,14 @@ a.upyun {
             <h1>随机动漫图API</h1>
         </div>
         <div class="content">
+            <!-- <input id="demoInput" value="hello world"> -->
+<!-- <button class="btn" data-clipboard-target="#acgjb">复制</button> -->
+
                 <!-- <p><script>document.write(url);</script></p> -->
-				<h2>基本调用格式</h2>
-				<p>https://<script>document.write(url);</script>/acgurl.phpreturn=https</p>
+                <h2>基本调用格式 <button class="btn" data-clipboard-target="#acgjb">复制</button></h2>
+<!-- <button class="btn" data-clipboard-target="#acgjb">复制</button> -->
+                
+				<p id="acgjb">https://<script>document.write(url);</script>/acgurl.phpreturn=https</p>
 				<h2>参数</h2>
                 <p>return=json //输出JSON格式<br>return=http //跳转一张http图片<br>return=https //跳转一张https图片<br>return=img //不跳转直接输出(较慢)</p>
 				<h2>JSON调用格式</h2>
@@ -157,6 +176,7 @@ a.upyun {
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
     <script>
+        new ClipboardJS('.btn');
         // lazyload
     window.onload = function() {
         $('.zz img').addClass('lazyload');
@@ -176,6 +196,7 @@ a.upyun {
     }
     console.log(" %c bppws %c https://github.com/kaygb/www.kaygb.com/ ", "color: #000; background: pink; padding:5px;", "background: #fff; padding:5px;");
 //初始化
+
     </script>
 </body>
 </html>
