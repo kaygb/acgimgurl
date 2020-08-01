@@ -1,36 +1,172 @@
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="author" content="Xlch">
-		<title>随机二次元图片API</title>
-  		<link rel="shortcut icon" href="../favicon.ico">
-		<meta name="keywords" content="图库,二次元图片,二次元API,动漫图片API,图片API">
-		<meta name="description" content="随机二次元图片API,随机动漫壁纸,每天刷一刷，每次不一样。">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="main.css?ver=1.0">
-	</head>
-	<body>
-		<div>
-			<p class="title title2">随机二次元图片API</p>
-		</div>
-		<div class="container">
-			<div class="well">
-				<p>目前系统共收录 1000+ 张图片 API最后更新时间:2018-04-18</p>
-				<p>图片默认均为http，采用新浪图片，高速访问</p>
-				<p>API基本调用格式：</p>
-				<pre>https://xxx.xxx/acgurl.php</pre>
-				<p>参数：</p>
-				<pre>return=json/http/https/img</pre>
-				<p>JSON调用格式</p>
-                <pre>https://xxx.xxx/acgurl.php?return=json</pre>
-				<p>JSON数据</p>
-				<pre style="text-shadow: initial;"><span>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key">"code"</span>:<span class="json_string">"200"</span><span class="json_note"> #图片状态码</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key">"acgurl"</span>:<span class="json_string">"https:\/\/ws1.sinaimg.cn\/large\/0072Vf1pgy1foxkfy08umj31kw0w0nng.jpg"</span><span class="json_note"> #图片地址</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key">"width"</span>:<span class="json_string">"2048"</span><span class="json_note"> #图片宽</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key">"height"</span>:<span class="json_string">"1152"</span><span class="json_note"> #图片高</span><br>}</span></pre>
-			</div>
-		</div>
-		<div class="bottom">
-        	<p> Copyright &copy; 2017 <a target="_black" href="https://www.toubiec.cn/" title="顾轩博客">顾轩博客</a> 备案号:<a href="http://www.miibeian.gov.cn" target="_blank">闽ICP备16027597号-3</a><p>
-        	<!-- 统计代码 -->
-		</div>
-	</body>
+<!-- 
+Name：bppws
+Author：kaygb
+Version：20200708
+-->
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机动漫图片</title>
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#000">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/kaygb/blog-images/static_image/kaygb-logo/tx_compressed.jpg" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kaygb/www.kaygb.com@master/pws20200708/style.css"> -->
+    <style>
+            /* 
+Name：bppws
+Author：kaygb
+Version：20200708
+ */
+ /* @font-face {
+    font-family:'Concrete';
+    src: url('https://cdn.jsdelivr.net/gh/kaygb/www.kaygb.com@master/assets/Concrete/Concrete-2.ttf');
+} */
+body {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    background-color: black;
+    /* font-family: Concrete, Arial, Helvetica, sans-serif; */
+}
+.main {
+    max-width: 800px;
+    min-height: 500px;
+    margin: 20px auto;
+    padding:10px 30px 30px;
+    display: block;
+    position: relative;
+    background-color: rgba(0,0,0,.7);
+}
+div {
+    display: block;
+}
+h1 {
+    color: #e84393;
+    font-size: 3rem;
+    position: relative;
+    text-align: center;
+}
+h2,h3,h4,h5,h6{
+    color: #e84393;
+}
+p {
+    color: #b2bec3;
+    font-size: 1rem;
+    border: 1px dashed rgba(255, 255, 255, 0.5);
+    padding: 10px;
+}
+p a {
+    color: #e84393;
+}
+p a:hover, p a:visited, p a:focus {
+    color: #e84393;
+}
+.zz {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.486);
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.zz img {
+    /* backdrop-filter: blur(10px); */
+    /* filter: blur(20px); */
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 200%;
+    max-height: 200%;
+}
+.footer {
+    /* position: absolute; */
+    bottom: 0;
+    line-height: 50px;
+    height: 50px;
+    color: #999;
+    font-size: .9rem;
+}
+.footer a {
+    color: #999;
+}
+.footer img {
+    /* position: absolute; */
+    margin: 0;
+    padding: 0;
+    /* bottom: -20; */
+}
+a.upyun {
+    /* margin: 0; */
+    height: 50px;
+}
+@media screen and (max-width: 600px) {
+    .main {
+        margin: 100px auto;
+    }
+}
+    </style>
+    <script>
+        var url;
+        // url = window.location.host;  //如果是子目录，请自定义地址，不需要添加协议和最后的斜杠 “/”
+        url = "acg.t.eas1.cn";
+    </script>
+</head>
+<body>
+    <div class="zz"> 
+        <script>document.write('\<img class=\"lazy-img\" data-original=\"//'+ url +'/acgurl.php?return=https\" src\="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAICRAEAOw==\" alt=\"\" srcset=\"\"\>');</script>
+
+    </div>
+
+    <div class="main">
+        
+        <div class="title">
+            <h1>随机动漫图API</h1>
+        </div>
+        <div class="content">
+                <!-- <p><script>document.write(url);</script></p> -->
+				<h2>API基本调用格式</h2>
+				<p>https://<script>document.write(url);</script>/acgurl.phpreturn=https</p>
+				<h2>参数</h2>
+                <p>return=json //输出JSON格式<br>return=http //跳转一张http图片<br>return=https //跳转一张https图片<br>return=img //不跳转直接输出(较慢)</p>
+				<h2>JSON调用格式</h2>
+                <p>https://<script>document.write(url);</script>/acgurl.php?return=json</p>
+				<h2>JSON数据</h2>
+				<p style="text-shadow: initial;"><span>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key">"code"</span>:<span class="json_string">"200"</span><span class="json_note"> #图片状态码</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key">"acgurl"</span>:<span class="json_string">"https:\/\/ws1.sinaimg.cn\/large\/0072Vf1pgy1foxkfy08umj31kw0w0nng.jpg"</span><span class="json_note"> #图片地址</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key">"width"</span>:<span class="json_string">"2048"</span><span class="json_note"> #图片宽</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="json_key">"height"</span>:<span class="json_string">"1152"</span><span class="json_note"> #图片高</span><br>}</span></pre>
+        </div>
+        <div class="footer">
+            <span>Design by : <a href="https://blog.kaygb.com/" target="_blank">kaygb</a></span>
+            <span>Powerd by :  <a target="_black" href="https://www.toubiec.cn/" rel="nofollow" title="顾轩博客">顾轩博客</a></span>
+            
+        </div>
+
+    </div>
+
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+    <script>
+        // lazyload
+    window.onload = function() {
+        $('.zz img').addClass('lazyload');
+        $(function() {
+            $("img.lazyload").lazyload({
+                effect: 'fadeIn',
+                // inverval: 3000
+                effectspeed: 1000
+            });
+        });
+
+        $(".zz img").lazyload({
+            effect: 'fadeIn',
+            // inverval: 3000
+            effectspeed: 1000 
+        });
+    }
+    console.log(" %c bppws %c https://github.com/kaygb/www.kaygb.com/ ", "color: #000; background: pink; padding:5px;", "background: #fff; padding:5px;");
+//初始化
+    </script>
+</body>
 </html>
